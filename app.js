@@ -4,35 +4,29 @@ const yargs = require('yargs');
 
 const notes = require('./notes.js');
 
+const titleOptions = {
+    describe: 'Title of note',
+    demand: true,
+    alias: 't'
+};
+const bodyOptions = {
+    describe: 'Body of note',
+    demand: true,
+    alias: 'b'
+};
 // The sintax below is similar to the chain 'yargs.command().help().argv;'
 // For documentation on yargs go to npm yargs search result on Google
 const argv = yargs
     .command('add', 'Add a new note', {
-        title: {
-            describe: 'Title of note',
-            demand: true,
-            alias: 't'
-        },
-        body: {
-            describe: 'Body of note',
-            demand: true,
-            alias: 'b'
-        }
+        title: titleOptions,
+        body: bodyOptions
     })
     .command('list', 'List all notes')
     .command('read', 'Read a note', {
-        title: {
-            describe: 'Title of note',
-            demand: true,
-            alias: 't'
-        }
+        title: titleOptions
     })
     .command('remove', 'Remove a note', {
-        title: {
-            describe: 'Title of note',
-            demand: true,
-            alias: 't'
-        }
+        title: titleOptions
     })
     .help()
     .argv;
