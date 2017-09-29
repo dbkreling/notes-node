@@ -1,9 +1,7 @@
-console.log('Starting notes.js');
-
 const fs = require('fs');
 
 var fetchNotes = () => {
-    // Load the notes-data file into an array. Treat exception if ENOENT
+    // Load the notes-data file into an array. Return empy array if ENOENT
     try {
         var notesString = fs.readFileSync('notes-data.json');
         return JSON.parse(notesString);
@@ -32,7 +30,7 @@ var addNote = (title, body) => {
 };
 
 var getAll = () => {
-    console.log('Getting all notes');
+    return fetchNotes();
 };
 
 var getNote = (title) => {
