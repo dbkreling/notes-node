@@ -17,6 +17,7 @@ const bodyOptions = {
 // The sintax below is similar to the chain 'yargs.command().help().argv;'
 // For documentation on yargs go to npm yargs search result on Google
 const argv = yargs
+    .usage('Usage: $0 <command> [options [name]]')
     .command('add', 'Add a new note', {
         title: titleOptions,
         body: bodyOptions
@@ -57,5 +58,6 @@ if (command == 'add') {
     var message = noteRemoved ? 'Note was removed' : 'Note not found';
     console.log(message);
 } else {
-    console.log('Command not recognized');
+    console.log('Error: Command not recognized');
+    console.log('For more information run "node app.js [command] --help"');
 }
